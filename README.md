@@ -43,9 +43,9 @@ for z in range(size_Az):
 
 ## 4. Dimensionality
 
-There are many convolutional variants out there, but in Computer Vision we mostly use the 'same' convolution where the output has the same dimensionality as the 
+There are many convolutional variants out there, however in Computer Vision 'same' convolution is mostly used. In 'same' the output has the same dimensionality as the 
 input. When we use convolutions as video filters, smoothing, noising etc., we need the dimensionality of the initial video to stay as is, so 'same' comes
-handy. However I have included code for 'valid' types of convolutions too, where you can parse it as an argument inside the convolution function.
+handy. However I have included code for 'valid' types of convolutions too, you can parse it as an argument inside the convolution function.
 
 In order to acomplish 'same' we use padding at the edges of the initial video (light blue) before any convolution, using the following formula:
 
