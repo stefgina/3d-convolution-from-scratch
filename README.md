@@ -1,6 +1,6 @@
 # 3D Convolution
 
-* Environment Setup
+## 1. Environment Setup
   
 For the proper execution of the scripts there is an .yml anaconda environment with all the necessary dependencies
 needed. All you have to do is to create a conda environment in your machine pointing in my .yml file. If you don't know how to do that
@@ -8,7 +8,7 @@ read here : https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/mana
 
 
 
-* Theory Behind Convolution 
+## 2. Theory Behind Convolution 
   
 A 3D Convolution is a type of convolution where the kernel slides in 3 dimensions as opposed to 2 dimensions with 2D
 convolutions. You can think of a video as a 3D Array where X Axis depicts the pixel rows, Y Axis depicts the pixel
@@ -19,7 +19,7 @@ As you can see the output of a single convolution is a single element in the (gr
 
 <img src="https://github.com/stefgina/3d-convolution-from-scratch/blob/main/convo.png" width="400" height="300">
 
-* Convolution Implementation
+## 3. Convolution Implementation
 
 The essence of the 3D convolution are these 6 lines of python code bellow.  You have to
 create a "window" (light red) in the video array (light blue) equal sized with your Kernel, flip your kernel and then perform elementwise multiplication and summation
@@ -37,7 +37,7 @@ for z in range(size_Az):
 
 ```
 
-* Dimensionality
+## 4. Dimensionality
 
 There are many convolutional variants out there, but in Computer Vision we mostly use the 'same' convolution where the output has the same dimensionality as the 
 input. When we use convolutions as video filters, smoothing, noising etc., we need the dimensionality of the initial video to stay as is, so 'same' comes
@@ -51,7 +51,7 @@ output size = input size - kernel size + 2∗padding
 
 
 
-* Video Convolution Results
+## 5. Convolution Results
 
 A convolution between the video included in the repository (video.mp4) and a 3x3x3 Kernel with all values 1/3, shown at the figures bellow. Of course these two
 are just screenshots, the input and the output are pure videos. For the Data I/O you can use opencv functions just as I did.
