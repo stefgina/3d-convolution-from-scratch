@@ -1,10 +1,10 @@
-# 3D Convolution #
+# 3D Convolution 
 ```python
 
 Author -> Stefanos Ginargyros
 
 ```
-## 1. Environment Setup
+## 1. Environment Setupp
   
 For the proper execution of the scripts there is an .yml anaconda environment with all the necessary dependencies
 needed. All you have to do is to create a conda environment in your machine pointing in my .yml file. If you don't know how to do that
