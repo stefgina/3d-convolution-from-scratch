@@ -56,23 +56,39 @@ def myConv3D(A, kernel, param='same'):
                     output[z, y, x]=(kernel * A_padded[z: z+window_z, y: y+window_y, x: x+window_x]).sum()
         
     
-    if(param=='valid'):
+#     if(param=='valid'):
         
-        # the array stay as it is, no padding at all. The formula is, size = [(W-K+2P)/S]+1
-        # where w is the input
-        # k the kernel
-        # p the padding
-        # s the stride
-        output = np.zeros((size_Az - window_z + 1, size_Ay - window_y + 1, size_Ax - window_x +1))
+#         # the array stay as it is, no padding at all. The formula is, size = [(W-K+2P)/S]+1
+#         # where w is the input
+#         # k the kernel
+#         # p the padding
+#         # s the stride
+#         output = np.zeros((size_Az - window_z + 1, size_Ay - window_y + 1, size_Ax - window_x +1))
         
-        # loop over every pixel of the image
-        for z in range(size_Az - window_z + 1):
-            print(z)
-            for y in range(size_Ay - window_y + 1):
-                for x in range(size_Ax - window_x +1):
+#         # loop over every pixel of the image
+#         for z in range(size_Az - window_z + 1):
+#             print(z)
+#             for y in range(size_Ay - window_y + 1):
+#                 for x in range(size_Ax - window_x +1):
 
-                    # element-wise multiplication using (*), of the kernel and a kernel-sized window
-                    output[z, y, x]=(kernel * A[z: z+window_z, y: y+window_y, x: x+window_x]).sum()
+#                     # element-wise multiplication using (*), of the kernel and a kernel-sized window
+#                     output[z, y, x]=(kernel * A[z: z+window_z, y: y+window_y, x: x+window_x]).sum()
+                    
+    # can be further optimized utilizing numpy, in order to reduce runtime.                
+    if param == 'valid':
+        # Calculate the output size
+        output_size_z = size_Az - window_z + 1
+        output_size_y = size_Ay - window_y + 1
+        output_size_x = size_Ax - window_x + 1
+
+        # Initialize the output array
+        output = np.zeros((output_size_z, output_size_y, output_size_x))
+
+        # Perform element-wise multiplication and sum using vectorized operations
+        for z in range(output_size_z):
+            for y in range(output_size_y):
+                for x in range(output_size_x):
+                    output[z, y, x] = np.sum(kernel * A[z: z+window_z, y: y+window_y, x: x+window_x])
         
     
 
